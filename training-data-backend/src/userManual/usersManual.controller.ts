@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, ParseIntPipe, Patch, Post } from '@nestjs/common';
-import { UsersService } from './users.service';
+import { UsersService } from './usersManual.service';
 
 @Controller('users')
 export class UsersController {
@@ -15,7 +15,7 @@ export class UsersController {
 
     @Get(':id')
     getUserById(@Param('id') id: string){
-        return this.UsersService.findOneById(Number(id));   
+        return this.UsersService.findOneById(id);   
     }
 
     @Post()
@@ -25,7 +25,7 @@ export class UsersController {
 
     @Patch(':id')
     updateUser(
-        @Param('id', ParseIntPipe) id: number,
+        @Param('id') id: string,
         @Body() body: any,
     ){
         return {
@@ -36,7 +36,7 @@ export class UsersController {
     }
     
     @Delete(':id')
-    deleteUser( @Param('id', ParseIntPipe) id: number){
+    deleteUser( @Param('id') id: string){
         return {
             method: 'delete',
             id
