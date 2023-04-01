@@ -2,7 +2,7 @@
 Backend of the Training Data Project to track the progress with routines
 
 
-Models
+## Models
 
 ## Users
 ```
@@ -68,3 +68,31 @@ Models
         FK  exercise_id,
     }
 ```
+
+
+## With Entities
+
+```
+    $ nest g res users --no-spec
+```
+
+
+## Connect the App with postgres
+
+### Environment variables with Nestjs
+```
+  yarn add @nestjs/config
+```
+And add this in App.module.ts
+```
+    imports: [ ConfigModule.forRoot() ]
+```
+
+
+### Para la base de datos
+```
+  yarn add @nestjs/typeorm typeorm pg
+
+  yarn add @nestjs/typeorm typeorm mysql2
+```
+
